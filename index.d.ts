@@ -1,7 +1,23 @@
 import type {Options as MicromarkOptions} from 'micromark-extension-gfm'
-import type {Options as MdastOptions} from 'mdast-util-gfm'
 
 export {default} from './lib/index.js'
+
+export interface FootnoteOptions {
+  // To do: next major: change default.
+  /**
+   * Use a blank line for the first line of footnote definitions
+   * (boolean, default: false).
+   */
+  firstLineBlank?: boolean | null | undefined
+}
+
+export interface TableOptions {
+  tableCellPadding?: boolean | null | undefined
+  tablePipeAlign?: boolean | null | undefined
+  stringLength?: ((value: string) => number) | null | undefined
+}
+
+export interface MdastOptions extends FootnoteOptions, TableOptions {}
 
 /**
  * Configuration for `remark-gfm`.
